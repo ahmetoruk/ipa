@@ -58,7 +58,6 @@
             new IPAChar("r","Akıcı Ötümlü Dil Öndamak"),
             new IPAChar("j","Yarı Ünlü  Ötümlü Dil Öndamak"),
             new IPAChar("w","Yarı Ünlü Ötümlü Dil Artdamak"),
-            new IPAChar("w","Yarı Ünlü Ötümlü Dil Artdamak"),
             new IPAChar("i","dar, ön, kısa ünlü"),
             new IPAChar("i:","dar, ön, uzun ünlü"),
             new IPAChar("e","yarı-dar, ön, (düz) kısa ünlü"),
@@ -114,8 +113,8 @@
             if(ans == answer)
             {
 
-                $p = $("<p></p>").text("/"+ipatable[rand].char+"/ : "+ipatable[rand].position);
-                $(".kpd").append($p);
+                /*$p = $("<p></p>").text("/"+ipatable[rand].char+"/ : "+ipatable[rand].position);
+                $(".kpd").append($p);*/
                 $(this).addClass("backgroundGreen");
                 $(this).prop('disabled', true);
                 ipatable.splice(rand,1);
