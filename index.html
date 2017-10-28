@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPA Test</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        .btn
+        {
+            margin: 5px;
+            font-size: 20px;
+        }
+
+        .backgroundGreen,.backgroundGreen:active,.backgroundGreen:hover,.backgroundGreen:focus,.backgroundGreen[disabled]:hover{
+        background: #95f442;
+    }
+        p{
+            font-weight: bold;
+        }
+        .btn
+        {
+                -webkit-transition: background 0.05s ease-in-out;
+        -ms-transition:     background 0.05s ease-in-out;
+        transition:         background 0.05s ease-in-out;
+        }
+    </style>
+    <script>
+        function IPAChar (char,position,example) {
+            this.char = char;
+            this.position = position;
+            this.example = example;
+        }
+        var ipatable =[
+            new IPAChar("p","Patlamalı Ötümsüz Çift Dudaksı"),
+            new IPAChar("b","Patlamalı Ötümlü Çift Dudaksı"),
+            new IPAChar("d","Patlamalı Ötümlü  Dişucu Diş Ardı"),
+            new IPAChar("t","Patlamalı Ötümsüz  Dişucu Diş Ardı"),
+            new IPAChar("*d","Patlamalı Ötümlü Dişucu dişseti "),
+            new IPAChar("*t","Patlamalı Ötümsüz Dişucu dişseti" ),
+            new IPAChar("g","Patlamalı Ötümlü Dil Artdamak"),
+            new IPAChar("k","Patlamalı Ötümsüz Dil Artdamak"),
+            new IPAChar("v","Sızmalı Ötümlü Diş Dudaksı"),
+            new IPAChar("f","Sızmalı Ötümsüz Diş Dudaksı"),
+            new IPAChar("ð","Sızmalı Ötümlü Dişuçu Diş arası"),
+            new IPAChar("θ","Sızmalı Ötümsüz Dişuçu Diş arası"),
+            new IPAChar("z","Sızmalı Ötümlü Dişucu dişseti "),
+            new IPAChar("s","Sızmalı Ötümsüz Dişucu dişseti "),
+            new IPAChar("ʒ","Sızmalı Ötümlü Dil Öndamak"),
+            new IPAChar("ʃ","Sızmalı Ötümsüz Dil Öndamak"),
+            new IPAChar("h","Sızmalı Ötümsüz Gırtlak"),
+            new IPAChar("dʒ","Patlamalı Sızmalı Ötümlü Dil Öndamak"),
+            new IPAChar("tʃ","Patlamalı Sızmalı Ötümsüz Dil Öndamak"),
+            new IPAChar("m","Genisli Ötümlü Çift Dudaksı"),
+            new IPAChar("n","Genisli Ötümlü Dişucu dişseti"),
+            new IPAChar("ŋ","Genisli Ötümlü Dil Artdamak"),
+            new IPAChar("l","Akıcı Ötümlü Dişucu dişseti"),
+            new IPAChar("r","Akıcı Ötümlü Dil Öndamak"),
+            new IPAChar("j","Yarı Ünlü  Ötümlü Dil Öndamak"),
+            new IPAChar("w","Yarı Ünlü Ötümlü Dil Artdamak"),
+            new IPAChar("w","Yarı Ünlü Ötümlü Dil Artdamak"),
+            new IPAChar("i","dar, ön, kısa ünlü"),
+            new IPAChar("i:","dar, ön, uzun ünlü"),
+            new IPAChar("e","yarı-dar, ön, (düz) kısa ünlü"),
+            new IPAChar("æ","geniş, ön, (düz) kısa ünlü"),
+            new IPAChar("ə","yarı dar, orta kısa ünlü"),
+            new IPAChar("ɜ:","yarı dar, orta uzun ünlü"),
+            new IPAChar("ʌ","geniş, orta, kısa ünlü"),
+            new IPAChar("u:","dar, arka, yuvarlak, uzun ünlü"),
+            new IPAChar("ʊ","dar, arka, yuvarlak, kısa ünlü"),
+            new IPAChar("ɔ:","yarı-dar, arka, yuvarlak, uzun ünlü"),
+            new IPAChar("ɔ:","yarı-dar, arka, yuvarlak, uzun ünlü"),
+            new IPAChar("ɑ:","geniş, arka, yuvarlak, kısa ünlü"),
+            new IPAChar("ɒ","geniş, arka, uzun ünlü"),
+
+
+
+        ];
+  
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center"></h1>
+        <h6 class="text-center">* ile başlayanlar İngilizce.</h6>
+        <div class="col-sm-6 col-sm-offset-3 kpd">
+
+        </div>
+
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+    $(function(){
+        var answer = false;
+        var rand = false;
+        function setQuestion()
+        {
+            rand = Math.floor(Math.random() * ipatable.length);
+            answer = ipatable[rand].char;
+            $("h1").text(ipatable[rand].position);
+        }
+
+        for (var i = 0; i < ipatable.length; i++) {
+            $btn = $("<button></button>").addClass("btn btn-default answerbtn").text(ipatable[i].char);
+            $(".kpd").append($btn);
+
+        }
+        setQuestion();
+        $(".container").on("click", ".answerbtn", function(){
+            $(this).blur();
+            var ans= $(this).text();
+
+            if(ans == answer)
+            {
+
+                $p = $("<p></p>").text("/"+ipatable[rand].char+"/ : "+ipatable[rand].position);
+                $(".kpd").append($p);
+                $(this).addClass("backgroundGreen");
+                $(this).prop('disabled', true);
+                ipatable.splice(rand,1);
+                setQuestion();
+            }
+            else
+            {
+                setQuestion();
+            }
+
+        });
+    });
+    </script>
+</body>
+</html>
