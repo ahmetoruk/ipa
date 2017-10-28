@@ -11,19 +11,10 @@
             margin: 5px;
             font-size: 20px;
         }
-
         .backgroundGreen,.backgroundGreen:active,.backgroundGreen:hover,.backgroundGreen:focus,.backgroundGreen[disabled]:hover{
-        background: #95f442;
-    }
-        p{
-            font-weight: bold;
-        }
-        .btn
-        {
-                -webkit-transition: background 0.05s ease-in-out;
-        -ms-transition:     background 0.05s ease-in-out;
-        transition:         background 0.05s ease-in-out;
-        }
+        background: #95f442; }
+        p{  font-weight: bold;  }
+
     </style>
     <script>
         function IPAChar (char,position,example) {
@@ -32,6 +23,9 @@
             this.example = example;
         }
         var ipatable =[
+
+        ];
+        var unsuzler = [
             new IPAChar("p","Patlamalı Ötümsüz Çift Dudaksı"),
             new IPAChar("b","Patlamalı Ötümlü Çift Dudaksı"),
             new IPAChar("d","Patlamalı Ötümlü  Dişucu Diş Ardı"),
@@ -57,7 +51,9 @@
             new IPAChar("l","Akıcı Ötümlü Dişucu dişseti"),
             new IPAChar("r","Akıcı Ötümlü Dil Öndamak"),
             new IPAChar("j","Yarı Ünlü  Ötümlü Dil Öndamak"),
-            new IPAChar("w","Yarı Ünlü Ötümlü Dil Artdamak"),
+            new IPAChar("w","Yarı Ünlü Ötümlü Dil Artdamak")
+        ];
+        var unluler =[
             new IPAChar("i","dar, ön, kısa ünlü"),
             new IPAChar("i:","dar, ön, uzun ünlü"),
             new IPAChar("e","yarı-dar, ön, (düz) kısa ünlü"),
@@ -70,14 +66,25 @@
             new IPAChar("ɔ:","yarı-dar, arka, yuvarlak, uzun ünlü"),
             new IPAChar("ɑ:","geniş, arka, yuvarlak, kısa ünlü"),
             new IPAChar("ɒ","geniş, arka, uzun ünlü")
-
-
-
         ];
-  
+
     </script>
 </head>
 <body>
+    <div class="modal fade" id="starter" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-body">
+            <button class="btn btn-success btn-lg" id="btnunsuz" data-dismiss="modal">Ünsüzler</button>
+            <button class="btn btn-info btn-lg pull-right" id="btnunlu" data-dismiss="modal">Ünlüler</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
     <div class="container">
         <h1 class="text-center"></h1>
         <h6 class="text-center">* ile başlayanlar İngilizce.</h6>
@@ -90,6 +97,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
     $(function(){
+        $('.modal').modal('show');
         var answer = false;
         var rand = false;
         function setQuestion()
@@ -98,20 +106,29 @@
             answer = ipatable[rand].char;
             $("h1").text(ipatable[rand].position);
         }
-
-        for (var i = 0; i < ipatable.length; i++) {
+        function init()
+        {
+          for (var i = 0; i < ipatable.length; i++) {
             $btn = $("<button></button>").addClass("btn btn-default answerbtn").text(ipatable[i].char);
             $(".kpd").append($btn);
-
+            }
+             setQuestion();
         }
-        setQuestion();
+
+        $("#btnunlu").click(function(){
+            ipatable = unluler;
+            init();
+        });
+        $("#btnunsuz").click(function(){
+            ipatable = unsuzler;
+            init();
+        });
+
         $(".container").on("click", ".answerbtn", function(){
             $(this).blur();
             var ans= $(this).text();
-
             if(ans == answer)
             {
-
                 /*$p = $("<p></p>").text("/"+ipatable[rand].char+"/ : "+ipatable[rand].position);
                 $(".kpd").append($p);*/
                 $(this).addClass("backgroundGreen");
@@ -123,7 +140,6 @@
             {
                 setQuestion();
             }
-
         });
     });
     </script>
